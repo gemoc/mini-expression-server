@@ -182,7 +182,13 @@ public class AppAspect {
       return token;
     })).contains(token))) {
       final Object result = ServiceAspect.execute(s, params);
-      AppAspect.result(_self, result.toString());
+      if ((result != null)) {
+        AppAspect.result(_self, result.toString());
+      } else {
+        AppAspect.result(_self, "error");
+      }
+    } else {
+      AppAspect.result(_self, "error");
     }
   }
   

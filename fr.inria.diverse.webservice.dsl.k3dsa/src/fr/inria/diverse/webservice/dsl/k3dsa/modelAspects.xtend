@@ -83,7 +83,13 @@ class AppAspect {
 		val s = _self.services.findFirst[name == service]
 		if (s !== null && s.allowedUsers.map[token].contains(token)) {
 			val result = s.execute(params)
-			result(_self, result.toString)
+			if (result !== null) {
+				result(_self, result.toString)
+			} else {
+				result(_self, "error")
+			}
+		} else {
+			result(_self, "error")
 		}
 	}
 	
