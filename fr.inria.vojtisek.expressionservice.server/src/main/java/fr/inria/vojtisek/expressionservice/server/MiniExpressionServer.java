@@ -11,6 +11,7 @@ import fr.inria.vojtisek.expressionservice.server.json.ComputeRequest;
 import fr.inria.vojtisek.expressionservice.server.json.LoginResponse;
 import fr.inria.vojtisek.expressionservice.server.json.ResultResponse;
 import fr.inria.vojtisek.expressionservice.server.json.UserLoginRequest;
+import groovy.lang.GroovyShell;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
@@ -20,6 +21,7 @@ public class MiniExpressionServer {
 	static HashSet<String> allowedTokens = new HashSet<>(); 
 	
 	public static void main(String[] args) {
+		allowedTokens.add("testToken");
 		port(8080);
 		
 		get("/hello", (req, res) -> "Hello DiverSE");
@@ -62,15 +64,16 @@ public class MiniExpressionServer {
 		 		return new Gson()
 		 			      .toJson(new ResultResponse("invalid request. A valid request should look like: {" + 
 				  		      		"  \"token\":\"aValidToken\"," + 
-				  		      		"  \"expression\":\"yourexprssion\"" + 
+				  		      		"  \"expression\":\"yourexpression\"" + 
 				  		      		"}"));
 		 	}
 		    if(!allowedTokens.contains(compRequest.getToken())) {
 		    	return new Gson()
 		 			      .toJson(new ResultResponse("invalid token."));
 		    }
+		    GroovyShell shell = new GroovyShell();
 		    return new Gson()
-		      .toJson(new ResultResponse("42"));
+		      .toJson(new ResultResponse(shell.evaluate(compRequest.getExpression()).toString()));
 		});
 	}
 
