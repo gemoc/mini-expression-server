@@ -28,12 +28,21 @@ class ServiceAspect {
 	@Step
 	public def Object execute(List<Param> parameters) {
 		val fqn = _self.fqn
-		val i = fqn.lastIndexOf('.')
-		val classFqn = fqn.substring(0, i)
-		val methodName = fqn.substring(i + 1)
-		val c = Class.forName(classFqn)
-		val m = c.methods.findFirst[name == methodName]
-		return m.invoke(null, parameters.map[value])
+		if (fqn !== null) {
+			val i = fqn.lastIndexOf('.')
+			if (i != -1) {
+				val classFqn = fqn.substring(0, i)
+				val methodName = fqn.substring(i + 1)
+				try {
+					val c = Class.forName(classFqn)
+					val m = c.methods.findFirst[name == methodName]
+					if (m !== null) {
+						return m.invoke(null, parameters.map[value])
+					}
+				} catch (Exception e) {}
+			}
+		}
+		return null
 	}
 }
 

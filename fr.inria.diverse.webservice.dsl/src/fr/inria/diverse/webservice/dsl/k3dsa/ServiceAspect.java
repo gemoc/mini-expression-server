@@ -39,23 +39,34 @@ public class ServiceAspect {
   }
   
   protected static Object _privk3_execute(final ServiceAspectServiceAspectProperties _self_, final Service _self, final List<Param> parameters) {
-    try {
-      final String fqn = _self.getFqn();
+    final String fqn = _self.getFqn();
+    if ((fqn != null)) {
       final int i = fqn.lastIndexOf(".");
-      final String classFqn = fqn.substring(0, i);
-      final String methodName = fqn.substring((i + 1));
-      final Class<?> c = Class.forName(classFqn);
-      final Function1<Method, Boolean> _function = (Method it) -> {
-        String _name = it.getName();
-        return Boolean.valueOf(Objects.equal(_name, methodName));
-      };
-      final Method m = IterableExtensions.<Method>findFirst(((Iterable<Method>)Conversions.doWrapArray(c.getMethods())), _function);
-      final Function1<Param, String> _function_1 = (Param it) -> {
-        return it.getValue();
-      };
-      return m.invoke(null, ListExtensions.<Param, String>map(parameters, _function_1));
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
+      if ((i != (-1))) {
+        final String classFqn = fqn.substring(0, i);
+        final String methodName = fqn.substring((i + 1));
+        try {
+          final Class<?> c = Class.forName(classFqn);
+          final Function1<Method, Boolean> _function = (Method it) -> {
+            String _name = it.getName();
+            return Boolean.valueOf(Objects.equal(_name, methodName));
+          };
+          final Method m = IterableExtensions.<Method>findFirst(((Iterable<Method>)Conversions.doWrapArray(c.getMethods())), _function);
+          if ((m != null)) {
+            final Function1<Param, String> _function_1 = (Param it) -> {
+              return it.getValue();
+            };
+            return m.invoke(null, ListExtensions.<Param, String>map(parameters, _function_1));
+          }
+        } catch (final Throwable _t) {
+          if (_t instanceof Exception) {
+            final Exception e = (Exception)_t;
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+      }
     }
+    return null;
   }
 }
