@@ -165,9 +165,9 @@ public class AppAspect {
       final String token = sb.toString();
       UserAspect.token(usr, token);
       AppAspect.timestamps(_self).put(usr, Long.valueOf(new Date().getTime()));
-      _self.authSuccess(token);
+      AppAspect.authSuccess(_self, token);
     } else {
-      _self.authFailure();
+      AppAspect.authFailure(_self);
     }
   }
   
@@ -182,7 +182,7 @@ public class AppAspect {
       return token;
     })).contains(token))) {
       final Object result = ServiceAspect.execute(s, params);
-      _self.result(result.toString());
+      AppAspect.result(_self, result.toString());
     }
   }
   

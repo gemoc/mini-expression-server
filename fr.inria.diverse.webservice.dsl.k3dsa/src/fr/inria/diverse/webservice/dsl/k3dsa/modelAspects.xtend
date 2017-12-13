@@ -70,9 +70,9 @@ class AppAspect {
 			
 			usr.token = token
 			_self.timestamps.put(usr, (new Date).time)
-			_self.authSuccess(token)
+			authSuccess(_self, token)
 		} else {
-			_self.authFailure
+			authFailure(_self)
 		}
 	}
 	
@@ -83,7 +83,7 @@ class AppAspect {
 		val s = _self.services.findFirst[name == service]
 		if (s !== null && s.allowedUsers.map[token].contains(token)) {
 			val result = s.execute(params)
-			_self.result(result.toString)
+			result(_self, result.toString)
 		}
 	}
 	
