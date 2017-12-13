@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: fr.inria.diverse.webservice.dsl; singleton:=true
+Export-Package: fr.inria.diverse.webservice.dsl.k3dsa
 Bundle-Name: fr.inria.diverse.webservice.dsl
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
@@ -22,4 +23,3 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="privat
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: fr.inria.diverse.webservice.dsl.k3dsa
