@@ -72,7 +72,7 @@ public class GenericServer implements IEventManagerListener, IEventEmitter {
 			jsonJavaRootObject.remove("token");
 
 			// Prepare result
-			Map<String, String> result = new HashMap<String, String>();
+			Map<String, Object> result = new HashMap<String, Object>();
 
 			// Case not login (thus service call)
 			if (!path.equals("login")) {
@@ -99,20 +99,7 @@ public class GenericServer implements IEventManagerListener, IEventEmitter {
 				if (receivedEvent instanceof AppResultEvent) {
 					AppResultEvent receivedEvent_cast = (AppResultEvent) receivedEvent;
 					String serviceResult = receivedEvent_cast.getResult();
-					String valueForJson = null;
-					try {
-						Number numberResult = NumberFormat.getInstance().parse(serviceResult);
-						valueForJson = numberResult.toString();
-					} catch (ParseException e) {
-						if (result.equals("true")) {
-							valueForJson = "true";
-						} else if (result.equals("false")) {
-							valueForJson = "false";
-						} else {
-							valueForJson = "\"" + result + "\"";
-						}
-					}
-					result.put("result", valueForJson);
+					result.put("result", serviceResult);
 				}
 
 			}
