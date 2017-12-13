@@ -7,3 +7,13 @@
 /.UserAspect.java._trace
 /.UserAspectUserAspectContext.java._trace
 /.UserAspectUserAspectProperties.java._trace
+/.modelAspects.xtendbin
+/AppAspect.java
+/AppAspectAppAspectContext.java
+/AppAspectAppAspectProperties.java
+/ServiceAspect.java
+/ServiceAspectServiceAspectContext.java
+/ServiceAspectServiceAspectProperties.java
+/UserAspect.java
+/UserAspectUserAspectContext.java
+/UserAspectUserAspectProperties.java
