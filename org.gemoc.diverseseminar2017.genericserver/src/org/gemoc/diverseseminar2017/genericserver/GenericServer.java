@@ -86,7 +86,7 @@ public class GenericServer implements IEventManagerListener, IEventEmitter {
 					Param param = ModelFactory.eINSTANCE.createParam();
 					String paramValue = jsonJavaRootObject.get(paramName);
 					param.setName(paramName);
-					param.setName(paramValue);
+					param.setValue(paramValue);
 					appServiceEvent.getParams().add(param);
 				}
 
