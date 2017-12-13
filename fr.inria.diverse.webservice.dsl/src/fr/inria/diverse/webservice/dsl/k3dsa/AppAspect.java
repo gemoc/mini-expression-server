@@ -178,14 +178,22 @@ public class AppAspect {
       return Boolean.valueOf(Objects.equal(_name, service));
     };
     final Service s = IterableExtensions.<Service>findFirst(_self.getServices(), _function);
-    if (((s != null) && ListExtensions.<User, String>map(s.getAllowedUsers(), ((Function1<User, String>) (User it) -> {
-      return token;
-    })).contains(token))) {
-      final Object result = ServiceAspect.execute(s, params);
-      if ((result != null)) {
-        AppAspect.result(_self, result.toString());
+    final Function1<User, String> _function_1 = (User it) -> {
+      return UserAspect.token(it);
+    };
+    boolean _contains = ListExtensions.<User, String>map(_self.getUsers(), _function_1).contains(token);
+    if (_contains) {
+      if (((s != null) && ListExtensions.<User, String>map(s.getAllowedUsers(), ((Function1<User, String>) (User it) -> {
+        return UserAspect.token(it);
+      })).contains(token))) {
+        final Object result = ServiceAspect.execute(s, params);
+        if ((result != null)) {
+          AppAspect.result(_self, result.toString());
+        } else {
+          AppAspect.result(_self, "service error");
+        }
       } else {
-        AppAspect.result(_self, "error");
+        AppAspect.result(_self, "unauthorized user");
       }
     } else {
       AppAspect.result(_self, "unknown token");

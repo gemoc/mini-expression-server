@@ -81,12 +81,16 @@ class AppAspect {
 	def void service(String token, String service, List<Param> params) {
 		_self.updateTimestamps
 		val s = _self.services.findFirst[name == service]
-		if (s !== null && s.allowedUsers.map[token].contains(token)) {
-			val result = s.execute(params)
-			if (result !== null) {
-				result(_self, result.toString)
+		if (_self.users.map[it.token].contains(token)) {
+			if (s !== null && s.allowedUsers.map[it.token].contains(token)) {
+				val result = s.execute(params)
+				if (result !== null) {
+					result(_self, result.toString)
+				} else {
+					result(_self, "service error")
+				}
 			} else {
-				result(_self, "error")
+				result(_self, "unauthorized user")
 			}
 		} else {
 			result(_self, "unknown token")
