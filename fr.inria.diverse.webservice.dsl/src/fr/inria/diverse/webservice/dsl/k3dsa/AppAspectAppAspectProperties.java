@@ -18,4 +18,6 @@ public class AppAspectAppAspectProperties {
   public final List<String> es = IterableExtensions.<String>toList(IterableExtensions.<Emoji, String>map(EmojiManager.getAll(), ((Function1<Emoji, String>) (Emoji it) -> {
     return it.getUnicode();
   })));
+  
+  public final int tokenLength = 20;
 }

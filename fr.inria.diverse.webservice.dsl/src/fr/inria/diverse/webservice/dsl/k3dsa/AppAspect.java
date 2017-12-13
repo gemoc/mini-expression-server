@@ -145,6 +145,13 @@ public class AppAspect {
     return (java.util.List<java.lang.String>)result;
   }
   
+  private static int tokenLength(final App _self) {
+    final fr.inria.diverse.webservice.dsl.k3dsa.AppAspectAppAspectProperties _self_ = fr.inria.diverse.webservice.dsl.k3dsa.AppAspectAppAspectContext.getSelf(_self);
+    Object result = null;
+    result = _privk3_tokenLength(_self_, _self);;
+    return (int)result;
+  }
+  
   protected static void _privk3_auth(final AppAspectAppAspectProperties _self_, final App _self, final String login, final String password) {
     AppAspect.updateTimestamps(_self);
     final Function1<User, Boolean> _function = (User it) -> {
@@ -153,10 +160,9 @@ public class AppAspect {
     };
     final User usr = IterableExtensions.<User>findFirst(_self.getUsers(), _function);
     if (((usr != null) && Objects.equal(usr.getPassword(), password))) {
-      final int numberOfElements = 200;
       final ThreadLocalRandom rand = ThreadLocalRandom.current();
       final StringBuilder sb = new StringBuilder();
-      for (int i = 0; (i < numberOfElements); i++) {
+      for (int i = 0; (i < AppAspect.tokenLength(_self)); i++) {
         {
           final int randomIndex = rand.nextInt(AppAspect.es(_self).size());
           sb.append(AppAspect.es(_self).get(randomIndex));
@@ -279,5 +285,21 @@ public class AppAspect {
     	// Chut !
     }
     return _self_.es;
+  }
+  
+  protected static int _privk3_tokenLength(final AppAspectAppAspectProperties _self_, final App _self) {
+    try {
+    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
+    		if (m.getName().equals("getTokenLength") &&
+    			m.getParameterTypes().length == 0) {
+    				Object ret = m.invoke(_self);
+    				if (ret != null) {
+    					return (int) ret;
+    				}		}
+    	}
+    } catch (Exception e) {
+    	// Chut !
+    }
+    return _self_.tokenLength;
   }
 }

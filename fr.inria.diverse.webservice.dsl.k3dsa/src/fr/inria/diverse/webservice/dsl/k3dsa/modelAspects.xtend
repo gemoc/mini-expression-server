@@ -52,6 +52,7 @@ class AppAspect {
 	private val Map<User, Long> timestamps = new HashMap
 	private val long authTime = 60 * 1000 //milliseconds
 	private val List<String> es = EmojiManager::getAll.map[unicode].toList
+	private val int tokenLength = 20
 	
 	@Step
 	@EventHandler
@@ -59,10 +60,9 @@ class AppAspect {
 		_self.updateTimestamps
 		val usr = _self.users.findFirst[name == login]
 		if (usr !== null && usr.password == password) {
-			val numberOfElements = 200;
             val rand = ThreadLocalRandom.current();
             val sb = new StringBuilder();
-            for (var i = 0; i < numberOfElements; i++) {
+            for (var i = 0; i < _self.tokenLength; i++) {
                 val randomIndex = rand.nextInt(_self.es.size());
                 sb.append(_self.es.get(randomIndex));
             }
