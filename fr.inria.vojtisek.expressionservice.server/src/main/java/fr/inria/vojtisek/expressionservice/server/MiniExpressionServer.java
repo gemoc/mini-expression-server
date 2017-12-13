@@ -21,7 +21,7 @@ public class MiniExpressionServer {
 	static HashSet<String> allowedTokens = new HashSet<>(); 
 	
 	public static void main(String[] args) {
-		allowedTokens.add("testToken");
+		allowedTokens.add("testToken"); // TODO remove this dummy token used for dev/test purposes
 		port(8080);
 		
 		get("/hello", (req, res) -> "Hello DiverSE");
