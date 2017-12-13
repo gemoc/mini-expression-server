@@ -40,6 +40,9 @@ public class GenericServer implements IEventManagerListener, IEventEmitter {
 	public void setEventManager(IEventManager eventManager, Resource executedModel) {
 		this.eventManager = eventManager;
 		this.app = (App) executedModel.getContents().get(0);
+		eventManager.addListener(this);
+		Thread t = new Thread(() -> start());
+		t.start();
 	}
 
 	@Override

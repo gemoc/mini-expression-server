@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Genericserver
-Bundle-SymbolicName: org.gemoc.2017diverseseminar.genericserver
+Bundle-SymbolicName: org.gemoc.2017diverseseminar.genericserver;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.gemoc.diverseseminar2017.genericserver
