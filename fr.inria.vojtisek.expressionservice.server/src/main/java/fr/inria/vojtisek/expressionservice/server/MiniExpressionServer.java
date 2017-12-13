@@ -41,7 +41,7 @@ public class MiniExpressionServer {
 		    	Key key = MacProvider.generateKey();
 
 		    	String compactJws = Jwts.builder()
-		    	  .setSubject("Joe")
+		    	  .setSubject(user.getLogin())
 		    	  .signWith(SignatureAlgorithm.HS512, key)
 		    	  .compact();
 		    	allowedTokens.add(compactJws);
