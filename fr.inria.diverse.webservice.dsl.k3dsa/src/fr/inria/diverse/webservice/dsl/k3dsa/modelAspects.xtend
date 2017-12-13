@@ -89,7 +89,7 @@ class AppAspect {
 				result(_self, "error")
 			}
 		} else {
-			result(_self, "error")
+			result(_self, "unknown token")
 		}
 	}
 	

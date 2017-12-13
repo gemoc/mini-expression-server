@@ -188,7 +188,7 @@ public class AppAspect {
         AppAspect.result(_self, "error");
       }
     } else {
-      AppAspect.result(_self, "error");
+      AppAspect.result(_self, "unknown token");
     }
   }
   
