@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.inria.diverse.webservice.dsl.eventinterpreter
+Bundle-SymbolicName: fr.inria.diverse.webservice.dsl.eventinterpreter;singleton:=true
+Bundle-Version: 0.1.0
+Require-Bundle: org.eclipse.gemoc.executionframework.event.manager,
+  org.eclipse.gemoc.trace.commons.model,
+  org.eclipse.gemoc.xdsmlframework.api,
+  fr.inria.diverse.webservice.dsl,
+  fr.inria.diverse.webservice.dsl.event
+Export-Package: fr.inria.diverse.webservice.dsl.eventinterpreter
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+

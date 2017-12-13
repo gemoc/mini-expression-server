@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="webserviceevent" nsURI="http://www.example.org/modelevent/"
+    nsPrefix="webserviceevent">
+  <eClassifiers xsi:type="ecore:EClass" name="WebServiceDSLEvent" abstract="true"
+      eSuperTypes="http://www.eclipse.org/gemoc/event#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AppEvent" abstract="true" eSuperTypes="#//WebServiceDSLEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="app" lowerBound="1" eType="ecore:EClass ../../fr.inria.diverse.webservice.dsl.model/model/model.ecore#//App"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AppServiceEvent" eSuperTypes="#//AppEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="ecore:EClass ../../fr.inria.diverse.webservice.dsl.model/model/model.ecore#//Param"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AppResultEvent" eSuperTypes="#//AppEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AppAuthFailureEvent" eSuperTypes="#//AppEvent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AppAuthEvent" eSuperTypes="#//AppEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="login" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AppAuthSuccessEvent" eSuperTypes="#//AppEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

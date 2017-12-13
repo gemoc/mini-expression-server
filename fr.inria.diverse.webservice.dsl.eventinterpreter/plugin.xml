@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><plugin>
+  <extension point="org.eclipse.gemoc.executionframework.event.api">
+    <org.eclipse.gemoc.event.api class="fr.inria.diverse.webservice.dsl.eventinterpreter.WebServiceBehavioralAPI" language="fr.inria.diverse.webservice.dsl.WebService"/>
+  </extension>
+</plugin>
