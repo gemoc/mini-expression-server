@@ -1,13 +1,11 @@
 package fr.inria.diverse.webservice.dsl.k3dsa;
 
-import com.vdurmont.emoji.Emoji;
-import com.vdurmont.emoji.EmojiManager;
 import fr.inria.diverse.webservice.dsl.model.User;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class AppAspectAppAspectProperties {
@@ -15,9 +13,7 @@ public class AppAspectAppAspectProperties {
   
   public final long authTime = (60 * 1000);
   
-  public final List<String> es = IterableExtensions.<String>toList(IterableExtensions.<Emoji, String>map(EmojiManager.getAll(), ((Function1<Emoji, String>) (Emoji it) -> {
-    return it.getUnicode();
-  })));
+  public final List<String> es = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("a", "b", "c"));
   
   public final int tokenLength = 20;
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="org.gemoc.diverseminar2017.service" name="WebService" schema="schema/org.gemoc.diverseminar2017.service.exsd"/>
 </plugin>

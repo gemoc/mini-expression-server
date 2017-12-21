@@ -165,8 +165,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getService_Fqn() {
+	public EAttribute getService_MethodName() {
 		return (EAttribute) serviceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getService_AcceptedParams() {
+		return (EAttribute) serviceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -313,7 +322,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		serviceEClass = createEClass(SERVICE);
 		createEAttribute(serviceEClass, SERVICE__NAME);
 		createEReference(serviceEClass, SERVICE__ALLOWED_USERS);
-		createEAttribute(serviceEClass, SERVICE__FQN);
+		createEAttribute(serviceEClass, SERVICE__METHOD_NAME);
+		createEAttribute(serviceEClass, SERVICE__ACCEPTED_PARAMS);
 
 		appEClass = createEClass(APP);
 		createEReference(appEClass, APP__USERS);
@@ -372,8 +382,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getService_AllowedUsers(), this.getUser(), null, "allowedUsers", null, 0, -1, Service.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getService_Fqn(), ecorePackage.getEString(), "fqn", null, 0, 1, Service.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_MethodName(), ecorePackage.getEString(), "methodName", null, 0, 1, Service.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_AcceptedParams(), ecorePackage.getEString(), "acceptedParams", null, 0, -1,
+				Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(appEClass, App.class, "App", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApp_Users(), this.getUser(), null, "users", null, 0, -1, App.class, !IS_TRANSIENT,

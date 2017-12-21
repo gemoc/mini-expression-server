@@ -132,13 +132,22 @@ public interface ModelPackage extends EPackage {
 	int SERVICE__ALLOWED_USERS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Fqn</b></em>' attribute.
+	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__FQN = 2;
+	int SERVICE__METHOD_NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Accepted Params</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ACCEPTED_PARAMS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Service</em>' class.
@@ -147,7 +156,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = 3;
+	int SERVICE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -349,15 +358,26 @@ public interface ModelPackage extends EPackage {
 	EReference getService_AllowedUsers();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.diverse.webservice.dsl.model.Service#getFqn <em>Fqn</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.inria.diverse.webservice.dsl.model.Service#getMethodName <em>Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fqn</em>'.
-	 * @see fr.inria.diverse.webservice.dsl.model.Service#getFqn()
+	 * @return the meta object for the attribute '<em>Method Name</em>'.
+	 * @see fr.inria.diverse.webservice.dsl.model.Service#getMethodName()
 	 * @see #getService()
 	 * @generated
 	 */
-	EAttribute getService_Fqn();
+	EAttribute getService_MethodName();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link fr.inria.diverse.webservice.dsl.model.Service#getAcceptedParams <em>Accepted Params</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Accepted Params</em>'.
+	 * @see fr.inria.diverse.webservice.dsl.model.Service#getAcceptedParams()
+	 * @see #getService()
+	 * @generated
+	 */
+	EAttribute getService_AcceptedParams();
 
 	/**
 	 * Returns the meta object for the attribute '{@link fr.inria.diverse.webservice.dsl.model.Service#getName <em>Name</em>}'.
@@ -552,12 +572,20 @@ public interface ModelPackage extends EPackage {
 		EReference SERVICE__ALLOWED_USERS = eINSTANCE.getService_AllowedUsers();
 
 		/**
-		 * The meta object literal for the '<em><b>Fqn</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Method Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE__FQN = eINSTANCE.getService_Fqn();
+		EAttribute SERVICE__METHOD_NAME = eINSTANCE.getService_MethodName();
+
+		/**
+		 * The meta object literal for the '<em><b>Accepted Params</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE__ACCEPTED_PARAMS = eINSTANCE.getService_AcceptedParams();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

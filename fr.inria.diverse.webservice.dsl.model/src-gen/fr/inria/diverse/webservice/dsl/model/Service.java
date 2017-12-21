@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.inria.diverse.webservice.dsl.model.Service#getName <em>Name</em>}</li>
  *   <li>{@link fr.inria.diverse.webservice.dsl.model.Service#getAllowedUsers <em>Allowed Users</em>}</li>
- *   <li>{@link fr.inria.diverse.webservice.dsl.model.Service#getFqn <em>Fqn</em>}</li>
+ *   <li>{@link fr.inria.diverse.webservice.dsl.model.Service#getMethodName <em>Method Name</em>}</li>
+ *   <li>{@link fr.inria.diverse.webservice.dsl.model.Service#getAcceptedParams <em>Accepted Params</em>}</li>
  * </ul>
  *
  * @see fr.inria.diverse.webservice.dsl.model.ModelPackage#getService()
@@ -42,30 +43,46 @@ public interface Service extends EObject {
 	EList<User> getAllowedUsers();
 
 	/**
-	 * Returns the value of the '<em><b>Fqn</b></em>' attribute.
+	 * Returns the value of the '<em><b>Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Fqn</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Method Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fqn</em>' attribute.
-	 * @see #setFqn(String)
-	 * @see fr.inria.diverse.webservice.dsl.model.ModelPackage#getService_Fqn()
+	 * @return the value of the '<em>Method Name</em>' attribute.
+	 * @see #setMethodName(String)
+	 * @see fr.inria.diverse.webservice.dsl.model.ModelPackage#getService_MethodName()
 	 * @model
 	 * @generated
 	 */
-	String getFqn();
+	String getMethodName();
 
 	/**
-	 * Sets the value of the '{@link fr.inria.diverse.webservice.dsl.model.Service#getFqn <em>Fqn</em>}' attribute.
+	 * Sets the value of the '{@link fr.inria.diverse.webservice.dsl.model.Service#getMethodName <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fqn</em>' attribute.
-	 * @see #getFqn()
+	 * @param value the new value of the '<em>Method Name</em>' attribute.
+	 * @see #getMethodName()
 	 * @generated
 	 */
-	void setFqn(String value);
+	void setMethodName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Accepted Params</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Accepted Params</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Accepted Params</em>' attribute list.
+	 * @see fr.inria.diverse.webservice.dsl.model.ModelPackage#getService_AcceptedParams()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getAcceptedParams();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

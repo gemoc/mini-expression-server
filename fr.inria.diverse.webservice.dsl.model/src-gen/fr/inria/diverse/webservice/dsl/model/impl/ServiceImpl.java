@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -29,7 +30,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link fr.inria.diverse.webservice.dsl.model.impl.ServiceImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.inria.diverse.webservice.dsl.model.impl.ServiceImpl#getAllowedUsers <em>Allowed Users</em>}</li>
- *   <li>{@link fr.inria.diverse.webservice.dsl.model.impl.ServiceImpl#getFqn <em>Fqn</em>}</li>
+ *   <li>{@link fr.inria.diverse.webservice.dsl.model.impl.ServiceImpl#getMethodName <em>Method Name</em>}</li>
+ *   <li>{@link fr.inria.diverse.webservice.dsl.model.impl.ServiceImpl#getAcceptedParams <em>Accepted Params</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,24 +68,34 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	protected EList<User> allowedUsers;
 
 	/**
-	 * The default value of the '{@link #getFqn() <em>Fqn</em>}' attribute.
+	 * The default value of the '{@link #getMethodName() <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFqn()
+	 * @see #getMethodName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FQN_EDEFAULT = null;
+	protected static final String METHOD_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getFqn() <em>Fqn</em>}' attribute.
+	 * The cached value of the '{@link #getMethodName() <em>Method Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFqn()
+	 * @see #getMethodName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String fqn = FQN_EDEFAULT;
+	protected String methodName = METHOD_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAcceptedParams() <em>Accepted Params</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAcceptedParams()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> acceptedParams;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,8 +133,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFqn() {
-		return fqn;
+	public String getMethodName() {
+		return methodName;
 	}
 
 	/**
@@ -130,11 +142,25 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFqn(String newFqn) {
-		String oldFqn = fqn;
-		fqn = newFqn;
+	public void setMethodName(String newMethodName) {
+		String oldMethodName = methodName;
+		methodName = newMethodName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVICE__FQN, oldFqn, fqn));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVICE__METHOD_NAME, oldMethodName,
+					methodName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<String> getAcceptedParams() {
+		if (acceptedParams == null) {
+			acceptedParams = new EDataTypeUniqueEList<String>(String.class, this,
+					ModelPackage.SERVICE__ACCEPTED_PARAMS);
+		}
+		return acceptedParams;
 	}
 
 	/**
@@ -170,8 +196,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 			return getName();
 		case ModelPackage.SERVICE__ALLOWED_USERS:
 			return getAllowedUsers();
-		case ModelPackage.SERVICE__FQN:
-			return getFqn();
+		case ModelPackage.SERVICE__METHOD_NAME:
+			return getMethodName();
+		case ModelPackage.SERVICE__ACCEPTED_PARAMS:
+			return getAcceptedParams();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,8 +220,12 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 			getAllowedUsers().clear();
 			getAllowedUsers().addAll((Collection<? extends User>) newValue);
 			return;
-		case ModelPackage.SERVICE__FQN:
-			setFqn((String) newValue);
+		case ModelPackage.SERVICE__METHOD_NAME:
+			setMethodName((String) newValue);
+			return;
+		case ModelPackage.SERVICE__ACCEPTED_PARAMS:
+			getAcceptedParams().clear();
+			getAcceptedParams().addAll((Collection<? extends String>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,8 +245,11 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 		case ModelPackage.SERVICE__ALLOWED_USERS:
 			getAllowedUsers().clear();
 			return;
-		case ModelPackage.SERVICE__FQN:
-			setFqn(FQN_EDEFAULT);
+		case ModelPackage.SERVICE__METHOD_NAME:
+			setMethodName(METHOD_NAME_EDEFAULT);
+			return;
+		case ModelPackage.SERVICE__ACCEPTED_PARAMS:
+			getAcceptedParams().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -232,8 +267,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ModelPackage.SERVICE__ALLOWED_USERS:
 			return allowedUsers != null && !allowedUsers.isEmpty();
-		case ModelPackage.SERVICE__FQN:
-			return FQN_EDEFAULT == null ? fqn != null : !FQN_EDEFAULT.equals(fqn);
+		case ModelPackage.SERVICE__METHOD_NAME:
+			return METHOD_NAME_EDEFAULT == null ? methodName != null : !METHOD_NAME_EDEFAULT.equals(methodName);
+		case ModelPackage.SERVICE__ACCEPTED_PARAMS:
+			return acceptedParams != null && !acceptedParams.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -251,8 +288,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", fqn: ");
-		result.append(fqn);
+		result.append(", methodName: ");
+		result.append(methodName);
+		result.append(", acceptedParams: ");
+		result.append(acceptedParams);
 		result.append(')');
 		return result.toString();
 	}

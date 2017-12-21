@@ -3,7 +3,7 @@ Bundle-SymbolicName: fr.inria.diverse.webservice.dsl; singleton:=true
 Export-Package: fr.inria.diverse.webservice.dsl.k3dsa
 Bundle-Name: fr.inria.diverse.webservice.dsl
 Bundle-Version: 1.0.0
-Bundle-ClassPath: .,jars/emoji-java-4.0.0.jar,jars/json-20170516.jar
+Bundle-ClassPath: .,jars/com.vdurmont.emoji-java-4.0.0.jar,jars/org.json.json-20170516.jar
 Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="private",
  org.eclipse.xtext.xbase.lib;bundle-version="2.7.0";visibility:="private",
  com.google.guava;bundle-version="0.0.0";visibility:="private",
@@ -19,7 +19,9 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="privat
  org.eclipse.gemoc.execution.sequential.javaxdsml.api;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.gemoc.executionframework.engine;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
- fr.inria.diverse.webservice.dsl.model;bundle-version="0.0.0";visibility:="reexport"
+ fr.inria.diverse.webservice.dsl.model;bundle-version="0.0.0";visibility:="reexport",
+ org.eclipse.equinox.registry,
+ org.eclipse.core.runtime;bundle-version="3.13.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
